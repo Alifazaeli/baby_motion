@@ -1,0 +1,53 @@
+# Python / Django
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+.env
+*.log
+db.sqlite3
+staticfiles/
+media/
+backend/.venv/
+backend/staticfiles/
+
+# Django migrations — keep tracked
+# backend/apps/*/migrations/ (intentionally NOT ignored)
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+web/.next/
+web/node_modules/
+web/.env.local
+
+# Flutter / Dart
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/build/
+mobile/pubspec.lock
+*.iml
+.idea/
+*.swp
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

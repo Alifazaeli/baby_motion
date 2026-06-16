@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+:root {
+  --color-primary: #FF8C42;
+  --color-secondary: #4DB6AC;
+  --color-surface: #FFF8F0;
+}

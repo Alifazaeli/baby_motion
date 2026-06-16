@@ -1,0 +1,58 @@
+{
+  "landing": {
+    "hero_title": "BabyMotion",
+    "hero_subtitle": "Sweet stories for little ones aged 1–5",
+    "cta": "Sign in with Google — it's free",
+    "feature_age": "Age-appropriate content for 4 developmental stages",
+    "feature_languages": "Persian and English stories",
+    "feature_no_ads": "No ads, no in-app purchases"
+  },
+  "auth": {
+    "title": "Welcome to BabyMotion",
+    "sign_in_google": "Sign in with Google",
+    "signing_in": "Signing in…"
+  },
+  "onboarding": {
+    "step1_title": "What's your child's name?",
+    "child_name_hint": "Child's name",
+    "step2_title": "When was {name} born?",
+    "birth_year": "Year",
+    "birth_month": "Month",
+    "age_group_preview": "Age group: {group}",
+    "step3_title": "Choose content language",
+    "language_persian": "Persian (فارسی)",
+    "language_english": "English",
+    "continue": "Continue",
+    "get_started": "Get started"
+  },
+  "catalog": {
+    "title": "Stories",
+    "show_younger_toggle": "Show younger stories",
+    "age_transition_banner": "🎉 {name} is now {months} months old! New stories have been unlocked.",
+    "upcoming_transition": "More stories coming soon for {name}'s next stage (in {days} days).",
+    "graduated_out": "{name} has grown beyond our stories. Enjoy their favorites below!",
+    "empty": "No stories available yet. Check back soon!"
+  },
+  "player": {
+    "play": "Play",
+    "pause": "Pause",
+    "replay": "Replay",
+    "exit": "Exit",
+    "previous": "Previous scene",
+    "next": "Next scene",
+    "loading": "Loading story…"
+  },
+  "settings": {
+    "title": "Settings",
+    "child_profile": "Child Profile",
+    "ui_language": "App Language",
+    "content_language": "Content Language",
+    "sign_out": "Sign out",
+    "save": "Save"
+  },
+  "error": {
+    "generic": "Something went wrong. Please try again.",
+    "network": "No internet connection.",
+    "not_found": "Page not found."
+  }
+}

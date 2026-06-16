@@ -1,0 +1,62 @@
+{
+  "@@locale": "en",
+  "appName": "BabyMotion",
+  "splash_tagline": "Sweet stories for little ones",
+  "auth_title": "Welcome to BabyMotion",
+  "auth_sign_in_google": "Sign in with Google",
+  "onboarding_step1_title": "What's your child's name?",
+  "onboarding_child_name_hint": "Child's name",
+  "onboarding_step2_title": "When was {name} born?",
+  "@onboarding_step2_title": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "onboarding_birth_year": "Year",
+  "onboarding_birth_month": "Month",
+  "onboarding_age_group_preview": "Age group: {group}",
+  "@onboarding_age_group_preview": {
+    "placeholders": {
+      "group": {"type": "String"}
+    }
+  },
+  "onboarding_step3_title": "Choose content language",
+  "onboarding_language_persian": "Persian (فارسی)",
+  "onboarding_language_english": "English",
+  "onboarding_continue": "Continue",
+  "onboarding_get_started": "Get started",
+  "catalog_title": "Stories",
+  "catalog_show_younger_toggle": "Show younger stories",
+  "catalog_age_transition_banner": "🎉 {name} is now {months} months old! New stories have been unlocked.",
+  "@catalog_age_transition_banner": {
+    "placeholders": {
+      "name": {"type": "String"},
+      "months": {"type": "int"}
+    }
+  },
+  "catalog_upcoming_transition": "More stories coming soon for {name}'s next stage (in {days} days).",
+  "@catalog_upcoming_transition": {
+    "placeholders": {
+      "name": {"type": "String"},
+      "days": {"type": "int"}
+    }
+  },
+  "catalog_graduated_out": "{name} has grown beyond our stories. Enjoy their favorites below!",
+  "@catalog_graduated_out": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "player_play": "Play",
+  "player_pause": "Pause",
+  "player_replay": "Replay",
+  "player_exit": "Exit",
+  "player_previous": "Previous scene",
+  "player_next": "Next scene",
+  "settings_title": "Settings",
+  "settings_child_profile": "Child Profile",
+  "settings_ui_language": "App Language",
+  "settings_sign_out": "Sign out",
+  "error_generic": "Something went wrong. Please try again.",
+  "error_network": "No internet connection."
+}

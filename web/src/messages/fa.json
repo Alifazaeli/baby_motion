@@ -1,0 +1,58 @@
+{
+  "landing": {
+    "hero_title": "بیبی‌موشن",
+    "hero_subtitle": "قصه‌های شیرین برای کوچولوهای ۱ تا ۵ سال",
+    "cta": "ورود با گوگل — رایگان",
+    "feature_age": "محتوای متناسب با ۴ مرحله رشد",
+    "feature_languages": "قصه‌های فارسی و انگلیسی",
+    "feature_no_ads": "بدون تبلیغ، بدون خرید درون‌برنامه‌ای"
+  },
+  "auth": {
+    "title": "به بیبی‌موشن خوش آمدید",
+    "sign_in_google": "ورود با گوگل",
+    "signing_in": "در حال ورود…"
+  },
+  "onboarding": {
+    "step1_title": "اسم فرزندتان چیست؟",
+    "child_name_hint": "نام فرزند",
+    "step2_title": "{name} کِی به دنیا آمده؟",
+    "birth_year": "سال",
+    "birth_month": "ماه",
+    "age_group_preview": "گروه سنی: {group}",
+    "step3_title": "زبان محتوا را انتخاب کنید",
+    "language_persian": "فارسی",
+    "language_english": "انگلیسی",
+    "continue": "ادامه",
+    "get_started": "شروع کنید"
+  },
+  "catalog": {
+    "title": "قصه‌ها",
+    "show_younger_toggle": "نمایش قصه‌های قبلی",
+    "age_transition_banner": "🎉 {name} الان {months} ماهه شده! قصه‌های جدید باز شد.",
+    "upcoming_transition": "قصه‌های بیشتری برای مرحله‌ی بعدی {name} در {days} روز دیگر می‌آید.",
+    "graduated_out": "{name} از قصه‌های ما بزرگ‌تر شده. قصه‌های مورد علاقه‌اش را ببینید!",
+    "empty": "هنوز قصه‌ای موجود نیست. به زودی برمی‌گردیم!"
+  },
+  "player": {
+    "play": "پخش",
+    "pause": "مکث",
+    "replay": "بازپخش",
+    "exit": "خروج",
+    "previous": "صحنه قبلی",
+    "next": "صحنه بعدی",
+    "loading": "در حال بارگذاری قصه…"
+  },
+  "settings": {
+    "title": "تنظیمات",
+    "child_profile": "پروفایل فرزند",
+    "ui_language": "زبان برنامه",
+    "content_language": "زبان محتوا",
+    "sign_out": "خروج از حساب",
+    "save": "ذخیره"
+  },
+  "error": {
+    "generic": "مشکلی پیش آمد. لطفاً دوباره امتحان کنید.",
+    "network": "اتصال اینترنت برقرار نیست.",
+    "not_found": "صفحه پیدا نشد."
+  }
+}

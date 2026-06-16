@@ -1,0 +1,62 @@
+{
+  "@@locale": "fa",
+  "appName": "بیبی‌موشن",
+  "splash_tagline": "قصه‌های شیرین برای کوچولوها",
+  "auth_title": "به بیبی‌موشن خوش آمدید",
+  "auth_sign_in_google": "ورود با گوگل",
+  "onboarding_step1_title": "اسم فرزندتان چیست؟",
+  "onboarding_child_name_hint": "نام فرزند",
+  "onboarding_step2_title": "{name} کِی به دنیا آمده؟",
+  "@onboarding_step2_title": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "onboarding_birth_year": "سال",
+  "onboarding_birth_month": "ماه",
+  "onboarding_age_group_preview": "گروه سنی: {group}",
+  "@onboarding_age_group_preview": {
+    "placeholders": {
+      "group": {"type": "String"}
+    }
+  },
+  "onboarding_step3_title": "زبان محتوا را انتخاب کنید",
+  "onboarding_language_persian": "فارسی",
+  "onboarding_language_english": "انگلیسی",
+  "onboarding_continue": "ادامه",
+  "onboarding_get_started": "شروع کنید",
+  "catalog_title": "قصه‌ها",
+  "catalog_show_younger_toggle": "نمایش قصه‌های قبلی",
+  "catalog_age_transition_banner": "🎉 {name} الان {months} ماهه شده! قصه‌های جدید باز شد.",
+  "@catalog_age_transition_banner": {
+    "placeholders": {
+      "name": {"type": "String"},
+      "months": {"type": "int"}
+    }
+  },
+  "catalog_upcoming_transition": "قصه‌های بیشتری برای مرحله‌ی بعدی {name} در {days} روز دیگر می‌آید.",
+  "@catalog_upcoming_transition": {
+    "placeholders": {
+      "name": {"type": "String"},
+      "days": {"type": "int"}
+    }
+  },
+  "catalog_graduated_out": "{name} از قصه‌های ما بزرگ‌تر شده. قصه‌های مورد علاقه‌اش را ببینید!",
+  "@catalog_graduated_out": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "player_play": "پخش",
+  "player_pause": "مکث",
+  "player_replay": "بازپخش",
+  "player_exit": "خروج",
+  "player_previous": "صحنه قبلی",
+  "player_next": "صحنه بعدی",
+  "settings_title": "تنظیمات",
+  "settings_child_profile": "پروفایل فرزند",
+  "settings_ui_language": "زبان برنامه",
+  "settings_sign_out": "خروج از حساب",
+  "error_generic": "مشکلی پیش آمد. لطفاً دوباره امتحان کنید.",
+  "error_network": "اتصال اینترنت برقرار نیست."
+}
