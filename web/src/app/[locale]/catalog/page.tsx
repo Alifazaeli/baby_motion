@@ -19,20 +19,24 @@ export default function CatalogPage() {
   const [storiesByCategory, setStoriesByCategory] = useState<Record<string, Story[]>>({});
   const [includeYounger, setIncludeYounger] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    api.users.getMe().then((me) => {
-      if (me.children.length === 0) { router.push(`/${locale}/onboarding`); return; }
-      setChild(me.children[0]);
-    });
+    api.users.getMe()
+      .then((me) => {
+        if (me.children.length === 0) { router.push(`/${locale}/onboarding`); return; }
+        setChild(me.children[0]);
+      })
+      .catch((e) => { setError(e.message); setLoading(false); });
   }, [locale, router]);
 
   useEffect(() => {
     if (!child) return;
     setLoading(true);
+    setError(null);
     Promise.all([
-      api.content.getCategories(locale),                                              // UI locale → category names in English/Persian per URL
-      api.content.getStories({ childId: child.id, language: child.language, includeYounger }), // child's content language for story translations
+      api.content.getCategories(locale),
+      api.content.getStories({ childId: child.id, language: child.language, includeYounger }),
     ]).then(([cats, stories]) => {
       setCategories(cats);
       const grouped: Record<string, Story[]> = {};
@@ -41,10 +45,12 @@ export default function CatalogPage() {
         if (grouped[story.categoryId]) grouped[story.categoryId].push(story);
       }
       setStoriesByCategory(grouped);
-    }).finally(() => setLoading(false));
+    }).catch((e) => setError(e.message))
+      .finally(() => setLoading(false));
   }, [child, includeYounger]);
 
   if (loading) return <main className="min-h-screen bg-surface flex items-center justify-center"><div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full" /></main>;
+  if (error) return <main className="min-h-screen bg-surface flex items-center justify-center px-6"><p className="text-red-500 text-center">{error}</p></main>;
 
   return (
     <main className="min-h-screen bg-surface pb-16">
