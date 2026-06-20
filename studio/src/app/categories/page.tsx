@@ -144,7 +144,7 @@ export default function CategoriesPage() {
               </div>
             </div>
             <div className="space-y-1">
-              <p className="text-xs font-medium text-muted-foreground">Icon URL</p>
+              <p className="text-xs font-medium text-muted-foreground">Icon URL <span className="font-normal opacity-60">(optional)</span></p>
               <Input
                 value={createForm.icon_url}
                 onChange={(e) => setCreateForm((f) => ({ ...f, icon_url: e.target.value }))}

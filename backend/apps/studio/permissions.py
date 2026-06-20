@@ -14,6 +14,8 @@ class IsStudioUser(BasePermission):
     def has_permission(self, request, view) -> bool:
         if not request.user or not request.user.is_authenticated:
             return False
+        if request.user.is_superuser:
+            return True
         try:
             return request.user.admin_profile.role in self.ALLOWED_ROLES
         except Exception:
