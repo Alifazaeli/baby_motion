@@ -1,11 +1,14 @@
-import { categories, languages } from "@/lib/api";
+"use client";
+import useSWR from "swr";
+import { categories as categoriesApi, languages as languagesApi } from "@/lib/api";
 import { StoryWizard } from "@/components/StoryWizard";
+import { Skeleton } from "@/components/ui/skeleton";
 
-export default async function NewStoryPage() {
-  const [catsData, langsData] = await Promise.all([
-    categories.list().catch(() => ({ results: [] })),
-    languages.list().catch(() => ({ results: [] })),
-  ]);
+export default function NewStoryPage() {
+  const { data: catsData, isLoading: catsLoading } = useSWR("categories", () => categoriesApi.list());
+  const { data: langsData, isLoading: langsLoading } = useSWR("languages", () => languagesApi.list());
+
+  const loading = catsLoading || langsLoading;
 
   return (
     <div className="space-y-6">
@@ -15,7 +18,18 @@ export default async function NewStoryPage() {
           Describe your idea and Claude will break it into scenes
         </p>
       </div>
-      <StoryWizard categories={catsData.results} languages={langsData.results} />
+      {loading ? (
+        <div className="max-w-2xl mx-auto space-y-4">
+          <Skeleton className="h-10 w-full" />
+          <Skeleton className="h-32 w-full" />
+          <Skeleton className="h-10 w-full" />
+        </div>
+      ) : (
+        <StoryWizard
+          categories={catsData?.results ?? []}
+          languages={langsData?.results ?? []}
+        />
+      )}
     </div>
   );
 }
