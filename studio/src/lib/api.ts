@@ -37,16 +37,30 @@ async function request<T>(
 // ── Auth ──────────────────────────────────────────────────────────────────
 
 export async function studioLogin(email: string, password: string) {
-  const res = await fetch(`${API_BASE}/auth/login/`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
-  });
-  if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    throw new Error(body.detail ?? "Login failed");
+  let res: Response;
+  try {
+    res = await fetch(`${API_BASE}/auth/login/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+  } catch {
+    throw new Error("Cannot reach the server. Is the Django backend running on port 8000?");
   }
-  const data = await res.json();
+  if (!res.ok) {
+    let detail = `Server error (${res.status})`;
+    try {
+      const body = await res.json();
+      if (body.detail) detail = body.detail;
+    } catch {}
+    throw new Error(detail);
+  }
+  let data: Record<string, string>;
+  try {
+    data = await res.json();
+  } catch {
+    throw new Error("Server returned an unexpected response. Is the Django backend running?");
+  }
   localStorage.setItem("studio_access_token", data.access);
   localStorage.setItem("studio_refresh_token", data.refresh);
   return data;

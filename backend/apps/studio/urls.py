@@ -13,7 +13,7 @@ from .views import (
     UIStringViewSet,
 )
 
-router = DefaultRouter()
+router = DefaultRouter(trailing_slash=False)
 router.register(r"drafts", StoryDraftViewSet, basename="draft")
 router.register(r"segments", StorySegmentViewSet, basename="segment")
 router.register(r"assets", SegmentAssetViewSet, basename="asset")
@@ -23,6 +23,6 @@ router.register(r"ui-strings", UIStringViewSet, basename="ui-string")
 
 urlpatterns = [
     path("", include(router.urls)),
-    path("auth/login/", StudioLoginView.as_view(), name="studio-login"),
-    path("analytics/", AnalyticsView.as_view(), name="studio-analytics"),
+    path("auth/login", StudioLoginView.as_view(), name="studio-login"),
+    path("analytics", AnalyticsView.as_view(), name="studio-analytics"),
 ]
