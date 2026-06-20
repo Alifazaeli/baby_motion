@@ -1,7 +1,13 @@
 """Serializers for content endpoints."""
 from rest_framework import serializers
 
-from .models import Category, Story, StoryTranslation
+from .models import Category, Language, Story, StoryTranslation
+
+
+class LanguageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Language
+        fields = ["code", "display_name", "is_rtl", "is_active"]
 
 
 class CategorySerializer(serializers.ModelSerializer):

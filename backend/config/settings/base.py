@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.postgres",
     # Third-party
     "rest_framework",
     "rest_framework_simplejwt",
@@ -33,6 +34,7 @@ INSTALLED_APPS = [
     "apps.authentication",
     "apps.content",
     "apps.analytics",
+    "apps.studio",
 ]
 
 MIDDLEWARE = [
@@ -143,3 +145,22 @@ CELERY_BROKER_URL = env("CELERY_BROKER_URL", default="redis://localhost:6379/0")
 CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
+CELERY_TASK_TRACK_STARTED = True
+
+# AI service credentials
+ANTHROPIC_API_KEY = env("ANTHROPIC_API_KEY", default="")
+ELEVENLABS_API_KEY = env("ELEVENLABS_API_KEY", default="")
+
+# ElevenLabs voice IDs per language (fixed per language for v1 — see OD-7)
+ELEVENLABS_VOICES = {
+    "en": env("ELEVENLABS_VOICE_EN", default="EXAVITQu4vr4xnSDxMaL"),   # default: Bella
+    "fa": env("ELEVENLABS_VOICE_FA", default="pNInz6obpgDQGcFmaJgB"),   # default: Adam (multilingual)
+}
+
+# Google Vertex AI for Imagen 3
+GOOGLE_CLOUD_PROJECT = env("GOOGLE_CLOUD_PROJECT", default="")
+GOOGLE_CLOUD_LOCATION = env("GOOGLE_CLOUD_LOCATION", default="us-central1")
+GOOGLE_APPLICATION_CREDENTIALS = env("GOOGLE_APPLICATION_CREDENTIALS", default="")
+
+# Content Studio draft storage prefix (Arvan Cloud)
+STUDIO_DRAFT_PATH_PREFIX = "drafts"

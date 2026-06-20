@@ -29,6 +29,9 @@ out/
 web/.next/
 web/node_modules/
 web/.env.local
+studio/.next/
+studio/node_modules/
+studio/.env.local
 
 # Flutter / Dart
 mobile/.dart_tool/
@@ -36,9 +39,14 @@ mobile/.flutter-plugins
 mobile/.flutter-plugins-dependencies
 mobile/build/
 mobile/pubspec.lock
+mobile/.packages
 *.iml
 .idea/
 *.swp
+
+# Flutter generated files we don't want to track
+mobile/lib/l10n/app_localizations.dart
+mobile/lib/l10n/app_localizations_*.dart
 
 # macOS
 .DS_Store

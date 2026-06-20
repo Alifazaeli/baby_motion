@@ -10,6 +10,8 @@ urlpatterns = [
     path("api/v1/", include("apps.users.urls")),
     path("api/v1/", include("apps.content.urls")),
     path("api/v1/", include("apps.analytics.urls")),
+    # Content Studio (admin-only)
+    path("studio/api/", include("apps.studio.urls")),
     # OpenAPI docs (dev/staging only — gate in production via middleware if needed)
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
