@@ -128,7 +128,7 @@ export default function StoryDetailPage() {
               <DraftStatusBadge status={draft.status} />
             </div>
             <div className="flex items-center gap-2 text-sm text-muted-foreground flex-wrap">
-              <span>{AGE_GROUP_LABELS[draft.age_group]}</span>
+              <span>{draft.age_groups.map((ag) => AGE_GROUP_LABELS[ag]).join(" · ")}</span>
               <span>·</span>
               <span>{draft.languages.join(", ").toUpperCase()}</span>
               <span>·</span>

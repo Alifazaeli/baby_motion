@@ -210,7 +210,7 @@ def publish_draft(draft: "StoryDraft") -> None:
                 slug=slug,
                 defaults={
                     "category_id": draft.category_id,
-                    "age_group": draft.age_group,
+                    "age_group": draft.age_groups[0] if draft.age_groups else "",
                     "duration_seconds": int(total_duration),
                     "status": "published",
                     "published_at": timezone.now(),

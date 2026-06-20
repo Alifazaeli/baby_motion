@@ -20,7 +20,9 @@ export function StoryCard({ draft }: { draft: StoryDraftSummary }) {
         </CardHeader>
         <CardContent className="pb-4 space-y-3">
           <div className="flex flex-wrap gap-1.5">
-            <Badge variant="secondary" className="text-xs">{AGE_GROUP_LABELS[draft.age_group]}</Badge>
+            {draft.age_groups.map((ag) => (
+              <Badge key={ag} variant="secondary" className="text-xs">{AGE_GROUP_LABELS[ag]}</Badge>
+            ))}
             <Badge variant="outline" className="text-xs">{draft.category_slug}</Badge>
             {draft.languages.map((l) => (
               <Badge key={l} variant="outline" className="text-xs text-primary border-primary/40">{l.toUpperCase()}</Badge>

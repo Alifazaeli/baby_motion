@@ -65,7 +65,7 @@ def run_segmentation(self, draft_id: str, job_id: str) -> None:
         svc = ClaudeService()
         result = svc.segment_story(
             idea_text=draft.idea_text,
-            age_group=draft.age_group,
+            age_groups=draft.age_groups,
             languages=draft.languages,
             category_slug=draft.category.slug,
         )
@@ -102,7 +102,7 @@ def run_segmentation(self, draft_id: str, job_id: str) -> None:
                 defaults={
                     "status": "ready",
                     "content": narration_text,
-                    "generation_input": {"idea": draft.idea_text, "age_group": draft.age_group},
+                    "generation_input": {"idea": draft.idea_text, "age_groups": draft.age_groups},
                     "generated_at": timezone.now(),
                 },
             )

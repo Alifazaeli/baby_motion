@@ -60,7 +60,7 @@ class StoryDraftListSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "title",
-            "age_group",
+            "age_groups",
             "category_slug",
             "languages",
             "status",
@@ -90,7 +90,7 @@ class StoryDraftDetailSerializer(serializers.ModelSerializer):
             "id",
             "title",
             "idea_text",
-            "age_group",
+            "age_groups",
             "category",
             "category_slug",
             "languages",
@@ -148,12 +148,23 @@ class CategoryTranslationWriteSerializer(serializers.ModelSerializer):
         fields = ["language", "name"]
 
 
+class StudioCategorySerializer(serializers.ModelSerializer):
+    """Read serializer — includes nested translations for the CMS table."""
+
+    translations = CategoryTranslationWriteSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Category
+        fields = ["id", "slug", "icon_url", "display_order", "translations"]
+
+
 class CategoryWriteSerializer(serializers.ModelSerializer):
     translations = CategoryTranslationWriteSerializer(many=True, required=False)
 
     class Meta:
         model = Category
-        fields = ["slug", "icon_url", "display_order", "translations"]
+        fields = ["id", "slug", "icon_url", "display_order", "translations"]
+        read_only_fields = ["id"]
 
     def create(self, validated_data):
         translations = validated_data.pop("translations", [])

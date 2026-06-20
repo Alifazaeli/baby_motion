@@ -104,7 +104,7 @@ class ClaudeService:
     def segment_story(
         self,
         idea_text: str,
-        age_group: str,
+        age_groups: list[str],
         languages: list[str],
         category_slug: str = "",
     ) -> dict:
@@ -114,15 +114,17 @@ class ClaudeService:
         Raises ValueError on repeated validation failure.
         Raises anthropic.APIError on API failure.
         """
-        params = AGE_GROUP_PARAMS[age_group]
+        primary_age_group = age_groups[0] if age_groups else "30_42m"
+        params = AGE_GROUP_PARAMS[primary_age_group]
         age_label_map = {
             "12_18m": "12–18 months",
             "18_30m": "18–30 months",
             "30_42m": "30–42 months",
             "42_60m": "42–60 months",
         }
+        age_label = " & ".join(age_label_map[ag] for ag in age_groups if ag in age_label_map)
         system = _SYSTEM_PROMPT.format(
-            age_group_label=age_label_map[age_group],
+            age_group_label=age_label or age_label_map[primary_age_group],
             scene_count_min=params["scene_count_min"],
             scene_count_max=params["scene_count_max"],
             sentence_length=params["sentence_length"],

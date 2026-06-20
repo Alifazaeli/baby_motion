@@ -90,7 +90,7 @@ export const drafts = {
     return request<{ results: StoryDraftSummary[]; count: number }>(`/drafts/${qs}`);
   },
   get: (id: string) => request<StoryDraftDetail>(`/drafts/${id}/`),
-  create: (data: { title?: string; idea_text: string; age_group: string; category: string; languages: string[] }) =>
+  create: (data: { title?: string; idea_text: string; age_groups: string[]; category: string; languages: string[] }) =>
     request<StoryDraftDetail>(`/drafts/`, { method: "POST", body: JSON.stringify(data) }),
   update: (id: string, data: Partial<StoryDraftDetail>) =>
     request<StoryDraftDetail>(`/drafts/${id}/`, { method: "PATCH", body: JSON.stringify(data) }),
@@ -149,6 +149,7 @@ export const languages = {
     request<Language>("/languages/", { method: "POST", body: JSON.stringify(data) }),
   update: (code: string, data: Partial<Language>) =>
     request<Language>(`/languages/${code}/`, { method: "PATCH", body: JSON.stringify(data) }),
+  delete: (code: string) => request<void>(`/languages/${code}/`, { method: "DELETE" }),
 };
 
 // ── UI Strings ────────────────────────────────────────────────────────────

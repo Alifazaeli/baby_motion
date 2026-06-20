@@ -31,7 +31,7 @@ export interface StorySegment {
 export interface StoryDraftSummary {
   id: string;
   title: string;
-  age_group: AgeGroup;
+  age_groups: AgeGroup[];
   category_slug: string;
   languages: string[];
   status: DraftStatus;
@@ -63,12 +63,17 @@ export interface GenerationJob {
   created_at: string;
 }
 
+export interface CategoryTranslation {
+  language: string;
+  name: string;
+}
+
 export interface Category {
   id: string;
   slug: string;
   icon_url: string;
   display_order: number;
-  translations: { language: string; name: string }[];
+  translations: CategoryTranslation[];
 }
 
 export interface Language {

@@ -17,8 +17,8 @@ class StorySegmentInline(admin.TabularInline):
 
 @admin.register(StoryDraft)
 class StoryDraftAdmin(admin.ModelAdmin):
-    list_display = ("title", "age_group", "status", "category", "created_by", "created_at")
-    list_filter = ("status", "age_group")
+    list_display = ("title", "age_groups", "status", "category", "created_by", "created_at")
+    list_filter = ("status",)
     readonly_fields = ("id", "created_at", "updated_at", "linked_story")
     inlines = [StorySegmentInline]
 

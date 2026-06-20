@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
 import {
   Select,
   SelectContent,
@@ -18,7 +19,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -29,12 +29,18 @@ interface Props {
 export function StoryWizard({ categories, languages }: Props) {
   const router = useRouter();
   const [ideaText, setIdeaText] = useState("");
-  const [ageGroup, setAgeGroup] = useState<AgeGroup>("30_42m");
+  const [ageGroups, setAgeGroups] = useState<AgeGroup[]>(["30_42m"]);
   const [categoryId, setCategoryId] = useState(categories[0]?.id ?? "");
   const [selectedLangs, setSelectedLangs] = useState<string[]>(["fa", "en"]);
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  function toggleAgeGroup(ag: AgeGroup) {
+    setAgeGroups((prev) =>
+      prev.includes(ag) ? prev.filter((a) => a !== ag) : [...prev, ag]
+    );
+  }
 
   function toggleLang(code: string) {
     setSelectedLangs((prev) =>
@@ -45,6 +51,7 @@ export function StoryWizard({ categories, languages }: Props) {
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!ideaText.trim()) { setError("Please enter a story idea."); return; }
+    if (!ageGroups.length) { setError("Select at least one age group."); return; }
     if (!selectedLangs.length) { setError("Select at least one language."); return; }
     setError("");
     setLoading(true);
@@ -52,7 +59,7 @@ export function StoryWizard({ categories, languages }: Props) {
       const draft = await drafts.create({
         title: title.trim() || undefined,
         idea_text: ideaText.trim(),
-        age_group: ageGroup,
+        age_groups: ageGroups,
         category: categoryId,
         languages: selectedLangs,
       });
@@ -110,36 +117,43 @@ export function StoryWizard({ categories, languages }: Props) {
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              {/* Age group */}
-              <div className="space-y-2">
-                <Label>Age group</Label>
-                <Select value={ageGroup} onValueChange={(v) => setAgeGroup(v as AgeGroup)}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {(Object.entries(AGE_GROUP_LABELS) as [AgeGroup, string][]).map(([k, label]) => (
-                      <SelectItem key={k} value={k}>{label}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+            {/* Age groups (multi-select) */}
+            <div className="space-y-2">
+              <Label>
+                Age groups <span className="text-destructive">*</span>
+              </Label>
+              <div className="flex flex-wrap gap-2">
+                {(Object.entries(AGE_GROUP_LABELS) as [AgeGroup, string][]).map(([k, label]) => (
+                  <button
+                    key={k}
+                    type="button"
+                    onClick={() => toggleAgeGroup(k)}
+                    className={cn(
+                      "inline-flex items-center rounded-md border px-3 py-1.5 text-sm font-medium transition-colors",
+                      ageGroups.includes(k)
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-input bg-background hover:bg-accent hover:text-accent-foreground"
+                    )}
+                  >
+                    {label}
+                  </button>
+                ))}
               </div>
+            </div>
 
-              {/* Category */}
-              <div className="space-y-2">
-                <Label>Category</Label>
-                <Select value={categoryId} onValueChange={setCategoryId}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select category" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {categories.map((c) => (
-                      <SelectItem key={c.id} value={c.id}>{c.slug}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+            {/* Category */}
+            <div className="space-y-2">
+              <Label>Category</Label>
+              <Select value={categoryId} onValueChange={setCategoryId}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select category" />
+                </SelectTrigger>
+                <SelectContent>
+                  {categories.map((c) => (
+                    <SelectItem key={c.id} value={c.id}>{c.slug}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             {/* Languages */}

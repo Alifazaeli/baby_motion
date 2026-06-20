@@ -20,7 +20,7 @@ from rest_framework.viewsets import ModelViewSet, ViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from apps.content.models import Category, Language, UIString
-from apps.content.serializers import CategorySerializer, LanguageSerializer
+from apps.content.serializers import LanguageSerializer
 
 from .models import GenerationJob, SegmentAsset, StoryDraft, StorySegment
 from .permissions import IsStudioUser
@@ -32,6 +32,7 @@ from .serializers import (
     StoryDraftDetailSerializer,
     StoryDraftListSerializer,
     StorySegmentSerializer,
+    StudioCategorySerializer,
     UIStringSerializer,
 )
 
@@ -61,7 +62,7 @@ class StoryDraftViewSet(ModelViewSet):
             qs = qs.filter(status=s)
         ag = self.request.query_params.get("age_group")
         if ag:
-            qs = qs.filter(age_group=ag)
+            qs = qs.filter(age_groups__contains=[ag])
         cat = self.request.query_params.get("category")
         if cat:
             qs = qs.filter(category__slug=cat)
@@ -296,7 +297,7 @@ class StudioCategoryViewSet(ModelViewSet):
     def get_serializer_class(self):
         if self.action in ("create", "update", "partial_update"):
             return CategoryWriteSerializer
-        return CategorySerializer
+        return StudioCategorySerializer
 
 
 # ── CMS: Languages ────────────────────────────────────────────────────────────

@@ -30,7 +30,10 @@ class StoryDraft(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.TextField(blank=True, default="")
     idea_text = models.TextField()
-    age_group = models.CharField(max_length=20, choices=AGE_GROUP_CHOICES)
+    age_groups = ArrayField(
+        models.CharField(max_length=20, choices=AGE_GROUP_CHOICES),
+        default=list,
+    )
     category = models.ForeignKey(
         "content.Category", on_delete=models.PROTECT, related_name="story_drafts"
     )
